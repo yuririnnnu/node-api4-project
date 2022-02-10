@@ -37,10 +37,19 @@ server.post('/api/register', async (req, res) => {
 server.post('/api/login', (req, res) => {
     const { username, password } = req.body
     if(!username || !password) {
-        res.status(500).json({message: "Username and password must be inputted"})
+        res.status(500).json({message: "must input username and password"})
     } else {
         res.json({message: "Welcome to our world!"})
     }
 })
+server.get('/', async (req, res) => {
+    try {
+      const messageOfTheDay = process.env.MOTD || 'Welcome to our World!';
+      res.status(200).json({ motd: messageOfTheDay }); 
+    } catch (error) {
+      console.error('\nERROR', error);
+      res.status(500).json({ error: 'Something bad happen in server' });
+    }
+  });
 
 module.exports = server;

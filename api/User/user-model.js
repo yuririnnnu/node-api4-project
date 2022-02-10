@@ -4,8 +4,8 @@ function getId() {
   return nanoid().slice(0, 5)
 }
 const initializeUsers = () => ([
-    { id: getId(), username: 'Happy', password: 'hero' },
-    { id: getId(), username: 'Lucky', password: 'super hero' },
+    { id: getId(), username: 'Happy', password: 'demopassword' },
+    { id: getId(), username: 'Lucky', password: 'demopassword' },
   ])
   
   let users = initializeUsers()
@@ -19,5 +19,5 @@ const initializeUsers = () => ([
     users.push(newUser)
     return Promise.resolve(newUser)
   }
-  
+
   module.exports = { find, insert }
